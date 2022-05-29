@@ -1,0 +1,10 @@
+name: aPlus
+version: 1.0
+author: Alpha
+main: com.alpha.aplus.aplus
+api-version: 1.8
+commands:
+  aplus:
+    description: Main command for Aplus Anti-Cheat
+    usage: /<command>
+    aliases: a+
