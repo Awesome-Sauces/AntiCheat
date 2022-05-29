@@ -112,7 +112,7 @@ public class AABB {
                 t0 = t1;
                 t1 = t;
             }
-            tmin = Math.max(t0, tmin);
+            tmin = Math.max(t0, tmin)*.25;
             tmax = Math.min(t1, tmax);
             if (tmax <= tmin) return -1;
         }

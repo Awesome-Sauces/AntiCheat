@@ -27,7 +27,12 @@ public class Killaura {
     public void run(){
         if(!(event.getDamager() instanceof Player)) return;
 
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "Killaura " + ChatColor.GRAY + "targeting " + getTargetPlayer((Player) event.getDamager(), 3).getDisplayName());
+        Player player = getTargetPlayer((Player) event.getDamager(), 3);
+        if(player == null){
+            Bukkit.broadcastMessage(ChatColor.RED + ((Player) event.getDamager()).getDisplayName() + ChatColor.GRAY + " flagged " + ChatColor.YELLOW + "Killaura" );
+        }
+
+
 /*
         RayTrace rayTrace = new RayTrace(player.getEyeLocation().toVector(),player.getEyeLocation().getDirection());
         ArrayList<Vector> positions = rayTrace.traverse(10,0.01);
@@ -49,7 +54,7 @@ public class Killaura {
     // Returns first player in the specified player's line of sight
 // up to max blocks away, or null if none.
     private Player getTargetPlayer(Player player, int max) {
-        List<Player> possible = player.getNearbyEntities(max, max, max).stream().filter(entity -> entity instanceof Player).map(entity -> (Player) entity).filter(player::hasLineOfSight).collect(Collectors.toList());
+        List<Player> possible = player.getNearbyEntities(max, max, max).stream().filter(entity -> entity instanceof Player).map(entity -> (Player) entity)/*.filter(player::hasLineOfSight)*/.collect(Collectors.toList());
         Ray ray = Ray.from(player);
         double d = -1;
         Player closest = null;
