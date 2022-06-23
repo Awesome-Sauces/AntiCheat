@@ -15,15 +15,11 @@ public class Reach {
     public void run(){
 
 
-        Bukkit.broadcastMessage(ChatColor.YELLOW + "Reach " + ChatColor.GRAY + "called");
+
+        //Bukkit.broadcastMessage(ChatColor.YELLOW + "Reach " + ChatColor.GRAY + "called");
         boolean inRange = true;
 
-
-        for(Entity entity : event.getEntity().getNearbyEntities(3.5, 3.5, 3.5)){
-            if(entity.getType().equals(event.getDamager().getType())){
-                if(event.getDamager().equals(entity)) inRange = false;
-            }
-        }
+        if(event.getDamager().getLocation().distance(event.getEntity().getLocation()) > 3.5) inRange = false;
 
         if(inRange) Bukkit.broadcastMessage(ChatColor.RED + event.getDamager().getName() + ChatColor.GRAY + " flagged " + ChatColor.YELLOW + "Reach ");
     }

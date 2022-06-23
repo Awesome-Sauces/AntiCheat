@@ -27,27 +27,11 @@ public class Killaura {
     public void run(){
         if(!(event.getDamager() instanceof Player)) return;
 
-        Player player = getTargetPlayer((Player) event.getDamager(), 3);
+        Player player = getTargetPlayer((Player) event.getDamager(), 4);
         if(player == null){
             Bukkit.broadcastMessage(ChatColor.RED + ((Player) event.getDamager()).getDisplayName() + ChatColor.GRAY + " flagged " + ChatColor.YELLOW + "Killaura" );
         }
 
-
-/*
-        RayTrace rayTrace = new RayTrace(player.getEyeLocation().toVector(),player.getEyeLocation().getDirection());
-        ArrayList<Vector> positions = rayTrace.traverse(10,0.01);
-        for (Vector vector : positions) {
-
-            Location position = vector.toLocation(player.getWorld());
-            Block block = player.getWorld().getBlockAt(position);
-
-            if (block != null && block.getType() != Material.AIR && rayTrace.intersects(new BoundingBox(block), 10.0, 0.01)) {
-                player.sendMessage(block.getType().toString());
-                break;
-            }
-
-        }
-        */
     }
 
 
